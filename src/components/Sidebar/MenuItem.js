@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import "./MenuItem.css";
 
 export default function MenuItem(props) {
+  const [open, setOpen] = useState(false);
+
+  function handleClick() {
+    setOpen(!open);
+  }
+
   return (
-    <li>
-      {props.label}
-      <ul>
-        {props.set.map((item) => (
-          <li>{item.name}</li>
-        ))}
-      </ul>
-    </li>
+    <div className="cityname">
+      <div className="pointer" onClick={handleClick}>
+        {props.cityname}
+      </div>
+      {open && (
+        <div className="cityset">
+          {props.cityset.map((item) => (
+            <div className="pointer">{item.name}</div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

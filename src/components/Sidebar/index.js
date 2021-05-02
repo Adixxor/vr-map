@@ -1,5 +1,6 @@
 import React from "react";
 import MenuItem from "./MenuItem";
+import "./index.css";
 
 const data = [
   {
@@ -19,10 +20,12 @@ const data = [
 
 export default function Sidebar() {
   return (
-    <div>
-      {data.map((element) => (
-        <MenuItem label={element.name} set={element.set} />
-      ))}
+    <div className="sidebar">
+      <div style={{ padding: "16px" }}>
+        {data.map((item) => (
+          <MenuItem cityname={item.name} cityset={item.set} />
+        ))}
+      </div>
     </div>
   );
 }
