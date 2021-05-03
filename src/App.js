@@ -1,5 +1,7 @@
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import Sidebar from "./components/Sidebar";
+import Layout from "./components/Layout";
+import Main from "./components/Main";
 
 const Container = styled.div`
   height: 100vh;
@@ -10,7 +12,14 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Sidebar />
+      <Layout>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" component={Main} />
+            <Route path="/test-page" component={Main} />
+          </Switch>
+        </BrowserRouter>
+      </Layout>
     </Container>
   );
 }
