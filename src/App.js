@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "./components/Layout";
 import Main from "./components/Main";
+import Tutorial from "./components/tutorial/Tutorial";
 
 const Container = styled.div`
   height: 100vh;
@@ -15,8 +16,9 @@ function App() {
       <Layout>
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={Main} />
+            <Route exact path="/" component={Main} />
             <Route path="/test-page" component={Main} />
+            <Route path="/tutorial" component={Tutorial} />
           </Switch>
         </BrowserRouter>
       </Layout>
