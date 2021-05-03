@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import "./MenuItem.css";
+import styled from "styled-components";
+
+const CityName = styled.div`
+  margin-bottom: 4px;
+`;
+
+const CitySet = styled.div`
+  padding-left: 8px;
+`;
+
+const ListItem = styled.div`
+  cursor: pointer;
+`;
 
 export default function MenuItem(props) {
   const [open, setOpen] = useState(false);
@@ -9,17 +21,15 @@ export default function MenuItem(props) {
   }
 
   return (
-    <div className="cityname">
-      <div className="pointer" onClick={handleClick}>
-        {props.cityname}
-      </div>
+    <CityName>
+      <ListItem onClick={handleClick}>{props.cityname}</ListItem>
       {open && (
-        <div className="cityset">
+        <CitySet>
           {props.cityset.map((item) => (
-            <div className="pointer">{item.name}</div>
+            <ListItem>{item.name}</ListItem>
           ))}
-        </div>
+        </CitySet>
       )}
-    </div>
+    </CityName>
   );
 }
