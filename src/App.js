@@ -1,11 +1,17 @@
-import "./App.css";
+import styled from "styled-components";
 import Sidebar from "./components/Sidebar";
+
+const Container = styled.div`
+  height: 100vh;
+  min-height: 100vh;
+  background-color: blue;
+`;
 
 function App() {
   return (
-    <div className="container">
+    <Container>
       <Sidebar />
-    </div>
+    </Container>
   );
 }
 
