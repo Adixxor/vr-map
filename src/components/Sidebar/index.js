@@ -1,7 +1,15 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import "./index.css";
 import { IoIosArrowBack } from "react-icons/io";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+  min-height: 100vh;
+  width: fit-content;
+`;
 
 const data = [
   {
@@ -21,7 +29,7 @@ const data = [
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
+    <Container>
       <div>
         <IoIosArrowBack />
         <input name="search" />
@@ -31,6 +39,6 @@ export default function Sidebar() {
           <MenuItem cityname={item.name} cityset={item.set} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
