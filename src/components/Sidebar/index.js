@@ -1,6 +1,7 @@
 import React from "react";
 import MenuItem from "./MenuItem";
 import "./index.css";
+import { IoIosArrowBack } from "react-icons/io";
 
 const data = [
   {
@@ -21,6 +22,10 @@ const data = [
 export default function Sidebar() {
   return (
     <div className="sidebar">
+      <div>
+        <IoIosArrowBack />
+        <input name="search" />
+      </div>
       <div style={{ padding: "16px" }}>
         {data.map((item) => (
           <MenuItem cityname={item.name} cityset={item.set} />
