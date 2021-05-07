@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
+import { FiMenu } from "react-icons/fi";
 import styled from "styled-components";
 import { SortedSidebarData } from "./SidebarData";
 import { colors } from "../../consts/colors";
 
-const Container = styled.div`
+const SidebarContainer = styled.div`
   background: rgba(249, 250, 252, 0.94);
   color: #0c0f12;
   font-family: "Roboto", sans-serif;
@@ -14,23 +15,23 @@ const Container = styled.div`
   flex-direction: column;
   min-height: 100%;
   width: fit-content;
-  padding: 20px 0px;
-  padding-left: 15px;
-  padding-right: 20px;
+`;
+
+const SidebarTop = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const IoIosArrowBackButton = styled(IoIosArrowBack)`
   color: ${colors.gray500};
   height: 40px;
   width: 40px;
-  margin-right: 10px;
-  padding-right: 4px;
+  padding: 15px 14px 15px 15px;
   cursor: pointer;
   transition: all 0.4s ease;
 
   &:hover {
     color: ${colors.gray300};
-    transition: all 0.4s ease;
   }
 `;
 
@@ -39,6 +40,7 @@ const SearchContainer = styled.div`
   display: flex;
   width: 100%;
   height: 28px;
+  margin-right: 19px;
   border-radius: 20px;
 `;
 
@@ -70,7 +72,6 @@ const IconSearchContainer = styled.div`
   &:hover {
     background: ${colors.gray300};
     border-radius: 20px;
-    transition: all 0.6s ease;
   }
 `;
 
@@ -80,31 +81,63 @@ const BiSearchButton = styled(BiSearch)`
   width: 20px;
 `;
 
-export default function Sidebar() {
-  const [sidebar, setSidebar] = useState(false);
+const FiMenuButton = styled(FiMenu)`
+  color: ${colors.gray500};
+  background: rgba(249, 250, 252, 0.94);
+  height: 30px;
+  width: 30px;
+  padding: 20px;
+  border-radius: 0px 0px 25px 0px;
+  cursor: pointer;
+  transition: all 0.4s ease;
 
-  function showSidebar() {
-    setSidebar(!sidebar);
+  &:hover {
+    color: ${colors.gray300};
+  }
+`;
+
+const SidebarListTitle = styled.div`
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 10px 0px 20px 25px;
+  border-top: solid 2px ${colors.gray100};
+`;
+
+const SidebarContentList = styled.div`
+  padding: 0px 0px;
+`;
+
+export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(true);
+
+  function closeSidebar() {
+    setIsOpen(false);
+  }
+
+  if (!isOpen) {
+    return <FiMenuButton onClick={() => setIsOpen(true)} />;
   }
 
   return (
-    <div style={{ height: "100vh", overflowY: "scroll" }} sidebar={sidebar}>
-      <Container>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <IoIosArrowBackButton onClick={showSidebar} />
+    <div style={{ height: "100vh", overflowY: "scroll" }}>
+      <SidebarContainer>
+        <SidebarTop>
+          <IoIosArrowBackButton onClick={closeSidebar} />
           <SearchContainer>
             <SearchInput name="search" placeholder="Szukaj" />
             <IconSearchContainer type="submit">
               <BiSearchButton />
             </IconSearchContainer>
           </SearchContainer>
-        </div>
-        <div style={{ padding: "16px" }}>
+        </SidebarTop>
+        <SidebarListTitle>Zdjęcia lotnicze:</SidebarListTitle>
+        <SidebarContentList>
           {SortedSidebarData.map((item) => (
             <MenuItem cityname={item.name} cityset={item.set} />
           ))}
-        </div>
-      </Container>
+        </SidebarContentList>
+      </SidebarContainer>
     </div>
   );
 }

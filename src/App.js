@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Layout from "./components/Layout";
 import Main from "./components/Main";
 import Tutorial from "./components/tutorial/Tutorial";
+import "./App.css";
 
 const Container = styled.div`
   height: 100vh;
