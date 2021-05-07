@@ -16,7 +16,7 @@ const RiArrowUpSFillIcon = styled(RiArrowUpSFill)`
 `;
 
 const CityName = styled.div`
-  padding: 0px 10px 10px 35px;
+  padding: 0px 25px 10px 35px;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
@@ -34,6 +34,7 @@ const CitySet = styled.div`
 const ListItem = styled.div`
   display: flex;
   margin-bottom: 10px;
+  max-width: 250px;
   cursor: pointer;
   transition: all 0.6s ease;
 
@@ -60,15 +61,15 @@ export default function MenuItem(props) {
   return (
     <CityName>
       <ListItem onClick={handleClick}>
-        {props.cityname}
+        {props.name}
         <ArrowContainer>
-          {!!props.cityset.length && <ArrowIcon open={open} />}
+          {!!props.set.length && <ArrowIcon open={open} />}
         </ArrowContainer>
       </ListItem>
       {open && (
         <CitySet>
-          {props.cityset.map((item) => (
-            <ListItem>{item.name}</ListItem>
+          {props.set.map((item) => (
+            <ListItem key={item.name}>{item.name}</ListItem>
           ))}
         </CitySet>
       )}

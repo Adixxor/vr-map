@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
@@ -98,9 +98,10 @@ const FiMenuButton = styled(FiMenu)`
 
 const SidebarListTitle = styled.div`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   text-transform: uppercase;
-  padding: 10px 0px 20px 25px;
+  padding: 20px 0px 15px 35px;
+  color: ${colors.gray500};
   border-top: solid 2px ${colors.gray100};
 `;
 
@@ -110,6 +111,16 @@ const SidebarContentList = styled.div`
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
+  const [search, setSearch] = useState("");
+  const searchRef = useRef(search);
+  const filteredSidebarData = SortedSidebarData.filter((item) =>
+    item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
+  );
+
+  function handleSearch() {
+    const value = searchRef.current.value;
+    setSearch(value);
+  }
 
   function closeSidebar() {
     setIsOpen(false);
@@ -125,16 +136,22 @@ export default function Sidebar() {
         <SidebarTop>
           <IoIosArrowBackButton onClick={closeSidebar} />
           <SearchContainer>
-            <SearchInput name="search" placeholder="Szukaj" />
-            <IconSearchContainer type="submit">
+            <SearchInput
+              ref={searchRef}
+              name="search"
+              placeholder="Szukaj"
+              autoComplete="off"
+              onKeyUp={handleSearch}
+            />
+            <IconSearchContainer type="submit" onClick={handleSearch}>
               <BiSearchButton />
             </IconSearchContainer>
           </SearchContainer>
         </SidebarTop>
-        <SidebarListTitle>Zdjęcia lotnicze:</SidebarListTitle>
+        <SidebarListTitle>Dostępne zestawy zdjęć lotniczych</SidebarListTitle>
         <SidebarContentList>
-          {SortedSidebarData.map((item) => (
-            <MenuItem cityname={item.name} cityset={item.set} />
+          {filteredSidebarData.map((item) => (
+            <MenuItem key={item.name} name={item.name} set={item.set} />
           ))}
         </SidebarContentList>
       </SidebarContainer>
