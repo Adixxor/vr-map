@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { colors } from "../../consts/colors";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
+import { AppContext } from "../../context/appContext";
 
 const RiArrowDownSFillIcon = styled(RiArrowDownSFill)`
   color: ${colors.gray500};
@@ -53,9 +54,14 @@ const ArrowIcon = ({ open }) => {
 
 export default function MenuItem(props) {
   const [open, setOpen] = useState(false);
+  const { setSelectedSet } = useContext(AppContext);
 
   function handleClick() {
     setOpen(!open);
+  }
+
+  function handleSetClick(cityName, setObj) {
+    setSelectedSet({ ...setObj, cityName });
   }
 
   return (
@@ -69,7 +75,12 @@ export default function MenuItem(props) {
       {open && (
         <CitySet>
           {props.set.map((item) => (
-            <ListItem key={item.name}>{item.name}</ListItem>
+            <ListItem
+              key={item.name}
+              onClick={() => handleSetClick(props.name, item)}
+            >
+              {item.name}
+            </ListItem>
           ))}
         </CitySet>
       )}
