@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import Main from "./components/Main";
 import Tutorial from "./components/tutorial/Tutorial";
 import "./App.css";
+import { AppContextProvider } from "./context/appContext";
 
 const Container = styled.div`
   height: 100vh;
@@ -14,15 +15,17 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-      <Layout>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/test-page" component={Main} />
-            <Route path="/tutorial" component={Tutorial} />
-          </Switch>
-        </BrowserRouter>
-      </Layout>
+      <AppContextProvider>
+        <Layout>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route path="/test-page" component={Main} />
+              <Route path="/tutorial" component={Tutorial} />
+            </Switch>
+          </BrowserRouter>
+        </Layout>
+      </AppContextProvider>
     </Container>
   );
 }
