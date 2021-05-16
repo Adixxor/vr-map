@@ -52,16 +52,36 @@ const ArrowIcon = ({ open }) => {
   return open ? <RiArrowUpSFillIcon /> : <RiArrowDownSFillIcon />;
 };
 
+const ChecboxContainer = styled.input`
+  margin-right: 10px;
+`;
+
 export default function MenuItem(props) {
   const [open, setOpen] = useState(false);
-  const { setSelectedSet } = useContext(AppContext);
+  const { checkedSets, setCheckedSets } = useContext(AppContext);
 
+  //  funkcja, która na kliknięcie otwórzy zamknięty element, bądź zamknie już otwarty
   function handleClick() {
     setOpen(!open);
   }
 
-  function handleSetClick(cityName, setObj) {
-    setSelectedSet({ ...setObj, cityName });
+  function handleCheckboxClick(cityName, setObj) {
+    setCheckedSets((prevCheckedSets) => {
+      // funkcja zwracająca elementy, które są aktualnie zaznaczone
+      if (
+        prevCheckedSets.find(
+          (item) => item.cityName === cityName && item.name === setObj.name
+        )
+      ) {
+        // jeśli kliknięty element został już wcześniej zaznaczony to go usuń...
+        return prevCheckedSets.filter(
+          (item) => !(item.cityName === cityName && item.name === setObj.name)
+        );
+      } else {
+        //... a jeśli nie był wcześniej zaznaczony to go dodaj
+        return [...prevCheckedSets, { ...setObj, cityName }];
+      }
+    });
   }
 
   return (
@@ -77,8 +97,14 @@ export default function MenuItem(props) {
           {props.set.map((item) => (
             <ListItem
               key={item.name}
-              onClick={() => handleSetClick(props.name, item)}
+              onClick={() => handleCheckboxClick(props.name, item)}
             >
+              <ChecboxContainer
+                type="checkbox"
+                checked={checkedSets.find(
+                  (set) => set.cityName === props.name && set.name === item.name
+                )}
+              ></ChecboxContainer>
               {item.name}
             </ListItem>
           ))}
