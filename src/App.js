@@ -5,11 +5,12 @@ import Main from "./components/Main";
 import Tutorial from "./components/tutorial/Tutorial";
 import "./App.css";
 import { AppContextProvider } from "./context/appContext";
+import { colors } from "./consts/colors";
 
 const Container = styled.div`
   height: 100vh;
   min-height: 100vh;
-  background-color: blue;
+  background-color: ${colors.gray100};
 `;
 
 function App() {

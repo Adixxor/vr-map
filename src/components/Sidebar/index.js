@@ -113,19 +113,29 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const [search, setSearch] = useState("");
   const searchRef = useRef(search);
+  // pofiltrowane dane z sidebaru na podstawie wpisywanej w wyszukiwarkę frazy (wielkość znaków nie ma znaczenia)
   const filteredSidebarData = SortedSidebarData.filter((item) =>
     item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
   );
 
+  // funkcja zczytująca wpisywane w wyszukiwarkę frazy (dzięki funkcji referencji)
   function handleSearch() {
     const value = searchRef.current.value;
     setSearch(value);
   }
 
+  // alternatywny sposób wyszukiwania
+  // function handleSearchChanged(event) {
+  // setSearch(event.target.value);
+  // }
+
+  // funkcja ustawiająca stan sidebaru (czy otwarty czy zamknięty)
   function closeSidebar() {
     setIsOpen(false);
   }
 
+  // jeśli stan sidebaru jest określony jako nie otwarty to
+  // zastąp pasek nawigacji ikoną "burger menu", którego kliknięcie przywraca nawigację
   if (!isOpen) {
     return <FiMenuButton onClick={() => setIsOpen(true)} />;
   }
@@ -142,6 +152,9 @@ export default function Sidebar() {
               placeholder="Szukaj"
               autoComplete="off"
               onKeyUp={handleSearch}
+              // alternatywnie bez ref
+              // onChange={(event) => handleSearchChanged(event)}
+              // value={search}
             />
             <IconSearchContainer type="submit" onClick={handleSearch}>
               <BiSearchButton />

@@ -101,9 +101,13 @@ export default function MenuItem(props) {
             >
               <ChecboxContainer
                 type="checkbox"
-                checked={checkedSets.find(
-                  (set) => set.cityName === props.name && set.name === item.name
-                )}
+                onChange={() => {}}
+                checked={
+                  !!checkedSets.find(
+                    (set) =>
+                      set.cityName === props.name && set.name === item.name
+                  )
+                }
               ></ChecboxContainer>
               {item.name}
             </ListItem>
