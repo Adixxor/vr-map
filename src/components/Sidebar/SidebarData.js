@@ -13,6 +13,10 @@ const SidebarData = [
               [51.0408395832, 17.2332350902],
               [51.0394751017, 17.1852283061],
             ],
+            stereoPair: {
+              left: null,
+              right: "6598_popr_geom_nowy",
+            },
           },
           {
             name: "6598_popr_geom_nowy",
@@ -22,6 +26,10 @@ const SidebarData = [
               [51.0396512381, 17.2410264155],
               [51.0393367225, 17.1932380132],
             ],
+            stereoPair: {
+              left: "6599_popr_geom_nowy",
+              right: null,
+            },
           },
           {
             name: "6564_popr_geom_nowy",
@@ -31,6 +39,10 @@ const SidebarData = [
               [51.0575580666, 17.1771740837],
               [51.0565829601, 17.1300845524],
             ],
+            stereoPair: {
+              left: null,
+              right: "6563_popr_geom_nowy",
+            },
           },
           {
             name: "6563_popr_geom_nowy",
@@ -40,6 +52,10 @@ const SidebarData = [
               [51.0582812034, 17.1870934641],
               [51.0569863506, 17.1400401568],
             ],
+            stereoPair: {
+              left: "6564_popr_geom_nowy",
+              right: "6562_popr_geom_nowy",
+            },
           },
           {
             name: "6562_popr_geom_nowy",
@@ -49,6 +65,10 @@ const SidebarData = [
               [51.0585070622, 17.1965103973],
               [51.0570808406, 17.149500993],
             ],
+            stereoPair: {
+              left: "6563_popr_geom_nowy",
+              right: null,
+            },
           },
         ],
       },
