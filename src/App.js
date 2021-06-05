@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "./components/Layout";
 import Main from "./components/Main";
+import StereoView from "./components/StereoView";
 import Tutorial from "./components/tutorial/Tutorial";
 import "./App.css";
 import { AppContextProvider } from "./context/appContext";
@@ -23,6 +24,7 @@ function App() {
               <Route exact path="/" component={Main} />
               <Route path="/test-page" component={Main} />
               <Route path="/tutorial" component={Tutorial} />
+              <Route path="/stereo-view" component={StereoView} />
             </Switch>
           </BrowserRouter>
         </Layout>
