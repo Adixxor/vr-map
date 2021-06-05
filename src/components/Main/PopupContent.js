@@ -91,13 +91,13 @@ export default function PopupContent({ photo, set }) {
       <StereoSubheading>Zobacz stereoparę ze zdjeciem:</StereoSubheading>
       <ButtonsContainer>
         <div>
-          {/* Jeśli zdjęcie ma lewą stereoparę wyświetl link do widoku stereopary, w innym wypadku wyświetl brak*/}
+          {/* Jeśli zdjęcie ma lewą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj*/}
           {photo.stereoPair?.left ? (
             <LinkButton to={"/stereo-view"}>Po lewej</LinkButton>
           ) : null}
         </div>
         <div>
-          {/* Jeśli zdjęcie ma prawą stereoparę wyświetl link do widoku stereopary, w innym wypadku wyświetl brak*/}
+          {/* Jeśli zdjęcie ma prawą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj*/}
           {photo.stereoPair?.right ? (
             <LinkButton to={"/stereo-view"}>
               {/* &rarr;  */}

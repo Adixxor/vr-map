@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ZoomControl, Polygon, Popup, FeatureGroup } from "react-leaflet";
 import { AppContext } from "../../context/appContext";
+import Layout from "../Layout";
 import LeafletMap from "../LeafletMap";
 import PopupContent from "./PopupContent";
 
@@ -46,34 +47,38 @@ export default function Main() {
   }
 
   return (
-    <div style={{ width: "100%", height: "100vh" }}>
-      <LeafletMap whenReady={(event) => setMyMap(event.target)}>
-        <ZoomControl position={"topright"} />
-        {/* pokaż poligony tylko zaznaczonych setów (checkedSets) */}
-        <FeatureGroup ref={groupRef}>
-          {checkedSets.map((set) => {
-            return set?.photos?.map((photo) => {
-              return (
-                <Polygon
-                  key={photo.name}
-                  positions={photo.bounds}
-                  // zapamiętaj nazwę klikniętego poligonu jako selected (setSelectedPolygon)
-                  eventHandlers={{ click: () => handlePhotoClick(photo.name) }}
-                  pathOptions={{
-                    // jeśli poligon jest zaznaczony to nadaj mu kolor czerwony, a w innym wypadku niebieski
-                    color:
-                      selectedPolygon === photo.name ? "#ED254E" : "#3388ff",
-                  }}
-                >
-                  <Popup>
-                    <PopupContent photo={photo} set={set} />
-                  </Popup>
-                </Polygon>
-              );
-            });
-          })}
-        </FeatureGroup>
-      </LeafletMap>
-    </div>
+    <Layout>
+      <div style={{ width: "100%", height: "100vh" }}>
+        <LeafletMap whenReady={(event) => setMyMap(event.target)}>
+          <ZoomControl position={"topright"} />
+          {/* pokaż poligony tylko zaznaczonych setów (checkedSets) */}
+          <FeatureGroup ref={groupRef}>
+            {checkedSets.map((set) => {
+              return set?.photos?.map((photo) => {
+                return (
+                  <Polygon
+                    key={photo.name}
+                    positions={photo.bounds}
+                    // zapamiętaj nazwę klikniętego poligonu jako selected (setSelectedPolygon)
+                    eventHandlers={{
+                      click: () => handlePhotoClick(photo.name),
+                    }}
+                    pathOptions={{
+                      // jeśli poligon jest zaznaczony to nadaj mu kolor czerwony, a w innym wypadku niebieski
+                      color:
+                        selectedPolygon === photo.name ? "#ED254E" : "#3388ff",
+                    }}
+                  >
+                    <Popup>
+                      <PopupContent photo={photo} set={set} />
+                    </Popup>
+                  </Polygon>
+                );
+              });
+            })}
+          </FeatureGroup>
+        </LeafletMap>
+      </div>
+    </Layout>
   );
 }

@@ -109,6 +109,8 @@ const SidebarContentList = styled.div`
   padding: 0px 0px;
 `;
 
+// TODO: kółeczko z liczbą zaznaczonych zestawów w danej miejscowości
+
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const [search, setSearch] = useState("");

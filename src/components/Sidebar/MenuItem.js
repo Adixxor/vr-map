@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { colors } from "../../consts/colors";
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
@@ -57,12 +57,26 @@ const ChecboxContainer = styled.input`
 `;
 
 export default function MenuItem(props) {
-  const [open, setOpen] = useState(false);
-  const { checkedSets, setCheckedSets } = useContext(AppContext);
+  const {
+    checkedSets,
+    setCheckedSets,
+    openedSidebarElements,
+    setOpenedSidebarElements,
+  } = useContext(AppContext);
+
+  const open = openedSidebarElements.find((item) => item === props.name);
 
   //  funkcja, która na kliknięcie otwórzy zamknięty element, bądź zamknie już otwarty
-  function handleClick() {
-    setOpen(!open);
+  function handleClick(cityName) {
+    setOpenedSidebarElements((prevOpened) => {
+      if (prevOpened.find((item) => item === cityName)) {
+        // jeśli MenuItem było open to usuń z setOpenedElements
+        return prevOpened.filter((item) => item !== cityName);
+      } else {
+        // jeśli MenuItem nie było open to dodaj do setOpenedElements
+        return [...prevOpened, cityName];
+      }
+    });
   }
 
   function handleCheckboxClick(cityName, setObj) {
@@ -86,7 +100,7 @@ export default function MenuItem(props) {
 
   return (
     <CityName>
-      <ListItem onClick={handleClick}>
+      <ListItem onClick={() => handleClick(props.name)}>
         {props.name}
         <ArrowContainer>
           {!!props.set.length && <ArrowIcon open={open} />}
