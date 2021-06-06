@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../../consts/colors";
 import styled from "styled-components";
+import { AppContext } from "../../context/appContext";
 
 const PopupInfoContainer = styled.div`
   min-width: 180px;
@@ -82,6 +83,11 @@ const LinkButton = styled(Link)`
 `;
 
 export default function PopupContent({ photo, set }) {
+  const { setChosenStereopair } = useContext(AppContext);
+  const handleClick = (left, right) => {
+    setChosenStereopair({ left, right });
+  };
+
   return (
     <PopupInfoContainer>
       <PhotoTitle>{photo.name}</PhotoTitle>
@@ -91,16 +97,23 @@ export default function PopupContent({ photo, set }) {
       <StereoSubheading>Zobacz stereoparę ze zdjeciem:</StereoSubheading>
       <ButtonsContainer>
         <div>
-          {/* Jeśli zdjęcie ma lewą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj*/}
+          {/* Jeśli zdjęcie ma lewą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj buttona*/}
           {photo.stereoPair?.left ? (
-            <LinkButton to={"/stereo-view"}>Po lewej</LinkButton>
+            <LinkButton
+              to={"/stereo-view"}
+              onClick={() => handleClick(photo.stereoPair.left, photo.name)}
+            >
+              Po lewej
+            </LinkButton>
           ) : null}
         </div>
         <div>
-          {/* Jeśli zdjęcie ma prawą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj*/}
+          {/* Jeśli zdjęcie ma prawą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj buttona*/}
           {photo.stereoPair?.right ? (
-            <LinkButton to={"/stereo-view"}>
-              {/* &rarr;  */}
+            <LinkButton
+              to={"/stereo-view"}
+              onClick={() => handleClick(photo.name, photo.stereoPair.right)}
+            >
               Po prawej
             </LinkButton>
           ) : null}
