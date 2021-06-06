@@ -84,9 +84,16 @@ const LinkButton = styled(Link)`
 
 export default function PopupContent({ photo, set }) {
   const { setChosenStereopair } = useContext(AppContext);
-  const handleClick = (left, right) => {
-    setChosenStereopair({ left, right });
+  const handleClick = (leftPhotoName, rightPhotoName) => {
+    const left = set.photos.find((item) => item.name === leftPhotoName);
+    const right = set.photos.find((item) => item.name === rightPhotoName);
+    setChosenStereopair({
+      left,
+      right,
+    });
   };
+
+  // TODO: Dodać współrzędne w popup
 
   return (
     <PopupInfoContainer>

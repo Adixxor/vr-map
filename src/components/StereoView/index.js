@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ZoomControl } from "react-leaflet";
 import LeafletMap from "../LeafletMap";
 import { MdArrowBack } from "react-icons/md";
 import "leaflet.sync";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import L, { LatLng } from "leaflet";
+import "leaflet-imageoverlay-rotated";
+import { AppContext } from "../../context/appContext";
+
+const PUBLIC_IMAGES = `${process.env.PUBLIC_URL}/images/`;
 
 const LinkButton = styled(Link)`
   position: absolute;
@@ -38,9 +43,13 @@ const BackToMainPageControl = () => {
   );
 };
 
+// TODO: centrowanie widoku na zdjęcia
+// TODO:dodaj opcję pełnego ekranu
+
 export default function StereoView() {
   const [leftMap, setLeftMap] = useState();
   const [rightMap, setRightMap] = useState();
+  const { chosenStereopair } = useContext(AppContext);
 
   useEffect(() => {
     if (leftMap && rightMap) {
@@ -48,6 +57,28 @@ export default function StereoView() {
       rightMap.sync(leftMap);
     }
   }, [leftMap, rightMap]);
+
+  useEffect(() => {
+    if (leftMap && rightMap && chosenStereopair) {
+      L.imageOverlay
+        .rotated(
+          `${PUBLIC_IMAGES}${chosenStereopair.left.fileName}`,
+          new LatLng(...chosenStereopair.left.bounds[0]),
+          new LatLng(...chosenStereopair.left.bounds[1]),
+          new LatLng(...chosenStereopair.left.bounds[3])
+        )
+        .addTo(leftMap);
+
+      L.imageOverlay
+        .rotated(
+          `${PUBLIC_IMAGES}${chosenStereopair.right.fileName}`,
+          new LatLng(...chosenStereopair.right.bounds[0]),
+          new LatLng(...chosenStereopair.right.bounds[1]),
+          new LatLng(...chosenStereopair.right.bounds[3])
+        )
+        .addTo(rightMap);
+    }
+  }, [leftMap, rightMap, chosenStereopair]);
 
   return (
     <div style={{ display: "flex", width: "100%", height: "100vh" }}>
