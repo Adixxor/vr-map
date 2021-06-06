@@ -6,7 +6,7 @@ const SidebarData = [
         name: "zestaw 1",
         photos: [
           {
-            name: "6599_popr_geom_nowy",
+            name: "6599_popr_geom",
             bounds: [
               [51.0696512069, 17.1830582524],
               [51.0710147946, 17.2310650382],
@@ -15,11 +15,11 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "6598_popr_geom_nowy",
+              right: "6598_popr_geom",
             },
           },
           {
-            name: "6598_popr_geom_nowy",
+            name: "6598_popr_geom",
             bounds: [
               [51.0693756891, 17.192732201],
               [51.0696935337, 17.2405262193],
@@ -27,12 +27,12 @@ const SidebarData = [
               [51.0393367225, 17.1932380132],
             ],
             stereoPair: {
-              left: "6599_popr_geom_nowy",
+              left: "6599_popr_geom",
               right: null,
             },
           },
           {
-            name: "6564_popr_geom_nowy",
+            name: "6564_popr_geom",
             bounds: [
               [51.0861717483, 17.1285331858],
               [51.087146231, 17.1756227168],
@@ -41,11 +41,11 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "6563_popr_geom_nowy",
+              right: "6563_popr_geom",
             },
           },
           {
-            name: "6563_popr_geom_nowy",
+            name: "6563_popr_geom",
             bounds: [
               [51.0865519571, 17.1379741215],
               [51.087849708, 17.1850331222],
@@ -53,12 +53,12 @@ const SidebarData = [
               [51.0569863506, 17.1400401568],
             ],
             stereoPair: {
-              left: "6564_popr_geom_nowy",
-              right: "6562_popr_geom_nowy",
+              left: "6564_popr_geom",
+              right: "6562_popr_geom",
             },
           },
           {
-            name: "6562_popr_geom_nowy",
+            name: "6562_popr_geom",
             bounds: [
               [51.0866189737, 17.1472319014],
               [51.0880442894, 17.1942412825],
@@ -66,7 +66,7 @@ const SidebarData = [
               [51.0570808406, 17.149500993],
             ],
             stereoPair: {
-              left: "6563_popr_geom_nowy",
+              left: "6563_popr_geom",
               right: null,
             },
           },
@@ -76,7 +76,7 @@ const SidebarData = [
         name: "zestaw 2",
         photos: [
           {
-            name: "3889_popr_geom_nowy",
+            name: "3889_popr_geom",
             bounds: [
               [51.0606484298, 17.1782477825],
               [51.0614503794, 17.1977577866],
@@ -85,7 +85,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "3888_popr_geom_nowy",
+            name: "3888_popr_geom",
             bounds: [
               [51.0597571431, 17.1703435152],
               [51.0605809839, 17.190028663],
@@ -94,7 +94,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "3887_popr_geom_nowy",
+            name: "3887_popr_geom",
             bounds: [
               [51.0601807528, 17.1630708846],
               [51.0609535229, 17.1826766541],
@@ -103,7 +103,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "3886_popr_geom_nowy",
+            name: "3886_popr_geom",
             bounds: [
               [51.0602252583, 17.1558936994],
               [51.0608670714, 17.1755249117],
@@ -112,7 +112,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "3885_popr_geom_nowy",
+            name: "3885_popr_geom",
             bounds: [
               [51.0606701434, 17.1480129816],
               [51.061144916, 17.1677652398],
@@ -126,7 +126,7 @@ const SidebarData = [
         name: "zestaw 3",
         photos: [
           {
-            name: "0040_popr_geom_nowy",
+            name: "0040_popr_geom",
             bounds: [
               [51.0595987455, 17.147311427],
               [51.0589591204, 17.1804542584],
@@ -135,7 +135,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0039_popr_geom_nowy",
+            name: "0039_popr_geom",
             bounds: [
               [51.0590501357, 17.1619800231],
               [51.0587453213, 17.194707881],
@@ -144,7 +144,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0038_popr_geom_nowy",
+            name: "0038_popr_geom",
             bounds: [
               [51.0590826636, 17.1740190098],
               [51.0591407993, 17.2067901606],
@@ -153,7 +153,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0037_popr_geom_nowy",
+            name: "0037_popr_geom",
             bounds: [
               [51.0595113688, 17.1875920119],
               [51.0596179896, 17.22037789],
@@ -162,7 +162,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0036_popr_geom_nowy",
+            name: "0036_popr_geom",
             bounds: [
               [51.059990927, 17.2001327017],
               [51.0597799313, 17.2329472829],
@@ -189,7 +189,7 @@ const SidebarData = [
         name: "zestaw 1",
         photos: [
           {
-            name: "0001_popr_geom_nowy",
+            name: "0001_popr_geom",
             bounds: [
               [51.1695987455, 17.257311427],
               [51.1689591204, 17.2904542584],
@@ -198,7 +198,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0002_popr_geom_nowy",
+            name: "0002_popr_geom",
             bounds: [
               [51.1690501357, 17.2719800231],
               [51.1687453213, 17.304707881],
