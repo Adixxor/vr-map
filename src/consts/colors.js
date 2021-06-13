@@ -3,4 +3,5 @@ export const colors = {
   gray500: "#707A85",
   gray300: "#b4bac0",
   gray100: "#D6DAE1",
+  accentColor: "#3388ff",
 };

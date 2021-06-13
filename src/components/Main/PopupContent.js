@@ -67,7 +67,7 @@ const LinkButton = styled(Link)`
 
   &:hover {
     text-decoration: none;
-    background: #3388ff;
+    background: ${colors.accentColor};
     transition: all 0.5s;
     box-shadow: 0px 3px 5px #d6e7ff;
     color: #ffffff;

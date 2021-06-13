@@ -18,6 +18,7 @@ const RiArrowUpSFillIcon = styled(RiArrowUpSFill)`
 
 const CityName = styled.div`
   padding: 0px 25px 10px 35px;
+  width: 250px;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
@@ -35,7 +36,6 @@ const CitySet = styled.div`
 const ListItem = styled.div`
   display: flex;
   margin-bottom: 10px;
-  max-width: 250px;
   cursor: pointer;
   transition: all 0.6s ease;
 
@@ -54,6 +54,22 @@ const ArrowIcon = ({ open }) => {
 
 const ChecboxContainer = styled.input`
   margin-right: 10px;
+`;
+
+const CounterContainer = styled.div`
+  margin-left: 10px;
+  margin-top: 3px;
+  min-height: 15px;
+  min-width: 15px;
+  max-height: 15px;
+  max-width: 15px;
+  border-radius: 50%;
+  background: ${colors.accentColor};
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
 `;
 
 export default function MenuItem(props) {
@@ -98,10 +114,17 @@ export default function MenuItem(props) {
     });
   }
 
+  const checkedSetsCount = checkedSets.filter(
+    (set) => set.cityName === props.name
+  ).length;
+
   return (
     <CityName>
       <ListItem onClick={() => handleClick(props.name)}>
         {props.name}
+        {!!checkedSetsCount && (
+          <CounterContainer>{checkedSetsCount}</CounterContainer>
+        )}
         <ArrowContainer>
           {!!props.set.length && <ArrowIcon open={open} />}
         </ArrowContainer>
