@@ -108,13 +108,17 @@ export default function StereoView() {
         new LatLng(...chosenStereopair.right.bounds[3])
       );
 
+      // Usuń zdjęcia z mapy
       leftImageRef.current.clearLayers();
       rightImageRef.current.clearLayers();
 
+      // Dodaj zdjęcia do mapy
       if (isReversed) {
+        // patrzenie krzyżowe
         leftImage.addTo(rightImageRef.current);
         rightImage.addTo(leftImageRef.current);
       } else {
+        // patrzenie normalne
         leftImage.addTo(leftImageRef.current);
         rightImage.addTo(rightImageRef.current);
       }
@@ -124,6 +128,7 @@ export default function StereoView() {
     }
   }, [leftMap, rightMap, chosenStereopair, isReversed]);
 
+  // Funkcja zmieniająca tryb wyświetlania map (patrzenie normalne (false) lub krzyżowe (true))
   function handleSwitchStereoViewClick() {
     setIsReversed(!isReversed);
   }
