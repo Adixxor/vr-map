@@ -19,7 +19,7 @@ const PhotoSetInfo = styled.div`
   color: ${colors.gray700};
 `;
 
-const StereoSubheading = styled.h4`
+const Subheading = styled.h4`
   margin-bottom: 10px;
 `;
 
@@ -93,15 +93,19 @@ export default function PopupContent({ photo, set }) {
     });
   };
 
-  // TODO: Dodać współrzędne w popup
-
   return (
     <PopupInfoContainer>
       <PhotoTitle>{photo.name}</PhotoTitle>
       <PhotoSetInfo>
         {set.cityName}, {set.name}
+        <Subheading>Współrzędne rogów:</Subheading>
+        {photo.bounds.map((number) => (
+          <div>
+            {number[0]}, {number[1]}
+          </div>
+        ))}
       </PhotoSetInfo>
-      <StereoSubheading>Zobacz stereoparę ze zdjeciem:</StereoSubheading>
+      <Subheading>Zobacz stereoparę ze zdjeciem:</Subheading>
       <ButtonsContainer>
         <div>
           {/* Jeśli zdjęcie ma lewą stereoparę wyświetl link do widoku stereopary, w innym wypadku nie wyświetlaj buttona*/}
