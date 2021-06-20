@@ -43,7 +43,6 @@ const BackToMainPageControl = () => {
   );
 };
 
-// TODO: centrowanie widoku na zdjęcia
 // TODO:dodaj opcję pełnego ekranu
 
 export default function StereoView() {
@@ -60,7 +59,7 @@ export default function StereoView() {
 
   useEffect(() => {
     if (leftMap && rightMap && chosenStereopair) {
-      L.imageOverlay
+      const leftImage = L.imageOverlay
         .rotated(
           `${PUBLIC_IMAGES}${chosenStereopair.left.fileName}`,
           new LatLng(...chosenStereopair.left.bounds[0]),
@@ -77,6 +76,9 @@ export default function StereoView() {
           new LatLng(...chosenStereopair.right.bounds[3])
         )
         .addTo(rightMap);
+
+      // Wycentruj widok lewej mapy do bounds lewego zdjęcia. Dzięki synchronizowaniu mapek wystarczy centrowanie jednego widoku.
+      leftMap.fitBounds(leftImage.getBounds());
     }
   }, [leftMap, rightMap, chosenStereopair]);
 

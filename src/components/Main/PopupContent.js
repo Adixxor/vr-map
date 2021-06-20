@@ -99,8 +99,8 @@ export default function PopupContent({ photo, set }) {
       <PhotoSetInfo>
         {set.cityName}, {set.name}
         <Subheading>Współrzędne rogów:</Subheading>
-        {photo.bounds.map((number) => (
-          <div>
+        {photo.bounds.map((number, index) => (
+          <div key={index}>
             {number[0]}, {number[1]}
           </div>
         ))}
