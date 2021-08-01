@@ -1,4 +1,4 @@
-// ścierzka to pliku data.csv
+// ścieżka to pliku data.csv
 const PUBLIC_DATA_CSV_PATH = `${process.env.PUBLIC_URL}/data/data.csv`;
 
 const Headers = {
@@ -179,7 +179,7 @@ export const processCSV = (str) => {
     const subMenuItemName = row[Headers.SubMenuItemName];
 
     if (menuItems.has(menuItemName)) {
-      // jeśli w menuItems już jest obieck z kluczem menuItemName (np. 'Wrocław')
+      // jeśli w menuItems już jest obiekt z kluczem menuItemName (np. 'Wrocław')
       const menuItem = menuItems.get(menuItemName);
 
       if (menuItem.sets.has(subMenuItemName)) {
