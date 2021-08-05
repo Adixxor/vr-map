@@ -37,7 +37,7 @@ export default function Main() {
     if (myMap) {
       const bounds = groupRef.current.getBounds();
       if (bounds.isValid()) {
-        myMap.fitBounds(bounds, { paddingTopLeft: [300, 0] });
+        myMap.fitBounds(bounds);
       }
     }
   }, [checkedSets, myMap]);
@@ -50,7 +50,7 @@ export default function Main() {
     <Layout>
       <div style={{ width: "100%", height: "100vh" }}>
         <LeafletMap whenReady={(event) => setMyMap(event.target)}>
-          <ZoomControl position={"topright"} />
+          <ZoomControl position={"topright"} zIndex={-1000} />
           {/* pokaż poligony tylko zaznaczonych setów (checkedSets) */}
           <FeatureGroup ref={groupRef}>
             {checkedSets.map((set) => {

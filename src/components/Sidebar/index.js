@@ -26,7 +26,7 @@ const IoIosArrowBackButton = styled(IoIosArrowBack)`
   color: ${colors.gray500};
   height: 40px;
   width: 40px;
-  padding: 15px 14px 15px 15px;
+  padding: 15px 5px 15px 15px;
   cursor: pointer;
   transition: all 0.4s ease;
 
@@ -35,13 +35,22 @@ const IoIosArrowBackButton = styled(IoIosArrowBack)`
   }
 `;
 
+const SidebarMiddle = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const SearchContainer = styled.div`
   background: ${colors.gray100};
   display: flex;
-  width: 100%;
+  width: 300px;
   height: 28px;
-  margin-right: 19px;
+  margin: 0px 20px 20px 30px;
   border-radius: 20px;
+
+  @media (max-width: 410px) {
+    width: 235px;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -105,6 +114,18 @@ const SidebarListTitle = styled.div`
   border-top: solid 2px ${colors.gray100};
 `;
 
+const SidebarMainTitle = styled.div`
+  font-weight: 500;
+  font-size: 22px;
+  text-transform: uppercase;
+  padding: 20px 20px 15px 0px;
+  color: ${colors.gray500};
+
+  @media (max-width: 410px) {
+    font-size: 18px;
+  }
+`;
+
 const SidebarContentList = styled.div`
   padding: 0px 0px;
 `;
@@ -145,6 +166,10 @@ export default function Sidebar() {
       <SidebarContainer>
         <SidebarTop>
           <IoIosArrowBackButton onClick={closeSidebar} />
+          <SidebarMainTitle>Serwis stereoskopowy</SidebarMainTitle>
+        </SidebarTop>
+        <SidebarMiddle>
+          <SidebarListTitle>Dostępne zestawy zdjęć lotniczych</SidebarListTitle>
           <SearchContainer>
             <SearchInput
               ref={searchRef}
@@ -160,8 +185,7 @@ export default function Sidebar() {
               <BiSearchButton />
             </IconSearchContainer>
           </SearchContainer>
-        </SidebarTop>
-        <SidebarListTitle>Dostępne zestawy zdjęć lotniczych</SidebarListTitle>
+        </SidebarMiddle>
         <SidebarContentList>
           {filteredSidebarData.map((item) => (
             <MenuItem key={item.name} name={item.name} set={item.set} />

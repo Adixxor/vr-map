@@ -75,7 +75,8 @@ const SwitchStereoViewTypeControl = (props) => {
   );
 };
 
-// TODO:dodaj opcję pełnego ekranu
+// TODO: dodaj opcję pełnego ekranu
+// TODO: dodaj tooltipy do ikon
 
 export default function StereoView() {
   const [leftMap, setLeftMap] = useState();

@@ -22,6 +22,11 @@ const CityName = styled.div`
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;
+
+  @media (max-width: 410px) {
+    font-size: 14px;
+    padding-right: 10px;
+  }
 `;
 
 const CitySet = styled.div`
@@ -31,6 +36,10 @@ const CitySet = styled.div`
   font-size: 14px;
   text-transform: lowercase;
   border-left: solid 3px ${colors.gray300};
+
+  @media (max-width: 410px) {
+    font-size: 13px;
+  }
 `;
 
 const ListItem = styled.div`
