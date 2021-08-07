@@ -72,11 +72,26 @@ const SwitchStereoViewTypeIcon = styled(HiOutlineSwitchHorizontal)`
   margin-top: 5px;
 `;
 
+const ViewTypeInfo = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0; 
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 4px 8px;
+  z-index: 800;
+  text-align: center;
+`;
+
 const SwitchStereoViewTypeControl = (props) => {
   return (
-    <SwitchStereoViewTypeButton onClick={props.onClick}>
-      <SwitchStereoViewTypeIcon />
-    </SwitchStereoViewTypeButton>
+    <>
+      <SwitchStereoViewTypeButton onClick={props.onClick}>
+        <SwitchStereoViewTypeIcon />
+      </SwitchStereoViewTypeButton>
+      <ViewTypeInfo>
+        {`Tryb wyświetlania: ${props.isReversed ? 'krzyżogląd' : 'prostogląd'}.`}
+      </ViewTypeInfo>
+    </>
   );
 };
 
@@ -183,6 +198,7 @@ export default function StereoView() {
         <ZoomControl position={"topright"} />
         <BackToMainPageControl />
         <SwitchStereoViewTypeControl
+          isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
         />
         <FullScreenControl 
@@ -197,6 +213,7 @@ export default function StereoView() {
         <ZoomControl position={"topright"} />
         <BackToMainPageControl />
         <SwitchStereoViewTypeControl
+          isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
         />
         <FullScreenControl 
