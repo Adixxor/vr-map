@@ -9,7 +9,7 @@ const SidebarData = [
         photos: [
           {
             name: "6599_fixed",
-            fileName: "6599.jpg",
+            fileName: "6599_fixed.jpg",
             bounds: [
               [51.0696512069, 17.1830582524],
               [51.0710147946, 17.2310650382],

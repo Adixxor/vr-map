@@ -64,7 +64,7 @@ const processTextToRows = (str) => {
 
   return rows.map(row => {
     // podziel komórki w rzędzie
-    const values = row.split(DELIMITER);
+    const values = row.split(DELIMITER).map(val => val.trim()); // trim - pozbądź się białych znaków na początku i końcu wartości w kolumnie
     const eachObject = headers.reduce((obj, header, i) => {
           // dla rzędów zamień kolumny z wartościami na parę { 'nazwa kolumny': 'wartość kolumny' }
           obj[header] = values[i];
@@ -94,7 +94,7 @@ const validateRows = (rows) => {
 
   // dla każdego rzędu sprawdź czy wymagane pola nie są puste lub w niepoprawnym formacie
   rows.forEach((row, i) => {
-    const index = i + 1; // indeks rzędu w data.csv
+    const index = i + 2; // indeks rzędu w data.csv (row[0] to index 1, + header 'odcięty' wcześniej)
     if (!row[Headers.MenuItemName]) {
       errors.push({ index, message: `[${Headers.MenuItemName}]: pole nie może być puste.` })
     }
