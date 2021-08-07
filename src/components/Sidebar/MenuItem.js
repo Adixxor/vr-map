@@ -34,7 +34,7 @@ const CitySet = styled.div`
   margin: 0px 5px 10px 5px;
   font-weight: 400;
   font-size: 14px;
-  text-transform: lowercase;
+  text-transform: none;
   border-left: solid 3px ${colors.gray300};
 
   @media (max-width: 410px) {
