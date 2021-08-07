@@ -174,7 +174,7 @@ export default function Sidebar() {
             <SearchInput
               ref={searchRef}
               name="search"
-              placeholder="Szukaj"
+              placeholder="Szukaj poligonu lub zestawu"
               autoComplete="off"
               onKeyUp={handleSearch}
               // alternatywnie bez ref

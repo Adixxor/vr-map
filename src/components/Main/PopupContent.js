@@ -101,7 +101,7 @@ export default function PopupContent({ photo, set }) {
         <Subheading>Współrzędne rogów:</Subheading>
         {photo.bounds.map((number, index) => (
           <div key={index}>
-            {number[0]}, {number[1]}
+            {number[0]} N, {number[1]} E
           </div>
         ))}
       </PhotoSetInfo>
