@@ -97,7 +97,7 @@ export default function PopupContent({ photo, set }) {
     <PopupInfoContainer>
       <PhotoTitle>{photo.name}</PhotoTitle>
       <PhotoSetInfo>
-        {set.cityName}, {set.name}
+        Poligon: {set.cityName} <br /> Zestaw: {set.name}
         <Subheading>Współrzędne rogów:</Subheading>
         {photo.bounds.map((number, index) => (
           <div key={index}>

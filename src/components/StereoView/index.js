@@ -75,11 +75,18 @@ const SwitchStereoViewTypeIcon = styled(HiOutlineSwitchHorizontal)`
 const ViewTypeInfo = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0; 
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 4px 8px;
   z-index: 800;
+  font-size: 13px;
   text-align: center;
+
+  @media (max-width: 780px) {
+    font-size: 10px;
+    left: 10px;
+    bottom: 21px;
+  }
 `;
 
 const SwitchStereoViewTypeControl = (props) => {
@@ -89,7 +96,9 @@ const SwitchStereoViewTypeControl = (props) => {
         <SwitchStereoViewTypeIcon />
       </SwitchStereoViewTypeButton>
       <ViewTypeInfo>
-        {`Tryb wyświetlania: ${props.isReversed ? 'krzyżogląd' : 'prostogląd'}.`}
+        {`Tryb wyświetlania: ${
+          props.isReversed ? "krzyżogląd" : "prostogląd"
+        }.`}
       </ViewTypeInfo>
     </>
   );
@@ -178,19 +187,24 @@ export default function StereoView() {
     if (document.fullscreenElement) {
       document.exitFullscreen();
     } else {
-      // Jeśli nie w trybie fullcreen to zarządaj fullscreen
+      // Jeśli nie w trybie fullcreen to zażądaj fullscreen
       if (containerRef.current.requestFullscreen) {
         containerRef.current.requestFullscreen();
-      } else if (containerRef.current.webkitRequestFullscreen) { // Safari
+      } else if (containerRef.current.webkitRequestFullscreen) {
+        // Safari
         containerRef.current.webkitRequestFullscreen();
-      } else if (containerRef.current.msRequestFullscreen) { // IE11
+      } else if (containerRef.current.msRequestFullscreen) {
+        // IE11
         containerRef.current.msRequestFullscreen();
       }
     }
-  };
+  }
 
   return (
-    <div ref={containerRef} style={{ display: "flex", width: "100%", height: "100vh" }}>
+    <div
+      ref={containerRef}
+      style={{ display: "flex", width: "100%", height: "100vh" }}
+    >
       <LeafletMap
         style={{ width: "50%", height: "100vh" }}
         whenReady={(event) => setLeftMap(event.target)}
@@ -201,9 +215,7 @@ export default function StereoView() {
           isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
         />
-        <FullScreenControl 
-          onClick={() => handleRequestFullscreen()}
-        />
+        <FullScreenControl onClick={() => handleRequestFullscreen()} />
         <FeatureGroup ref={leftImageRef} />
       </LeafletMap>
       <LeafletMap
@@ -216,9 +228,7 @@ export default function StereoView() {
           isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
         />
-        <FullScreenControl 
-          onClick={() => handleRequestFullscreen()}
-        />
+        <FullScreenControl onClick={() => handleRequestFullscreen()} />
         <FeatureGroup ref={rightImageRef} />
       </LeafletMap>
     </div>
