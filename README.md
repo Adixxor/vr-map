@@ -14,6 +14,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+#### Testing locally on the mobile device
+Make sure you are connected to same wifi
+Run `npm start` command
+Type `ipconfig` in your cmd...
+See your public ip (Wireless LAN adapter Wi-Fi: IPv4 Address)
+Type that public IP in your mobile web browser with Port no. (E.g: 192.168.0.175:3000/your_route)
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
