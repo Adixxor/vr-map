@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import MenuItem from "./MenuItem";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import styled from "styled-components";
-import { SortedSidebarData } from "./SidebarData";
 import { colors } from "../../consts/colors";
+import { AppContext } from "../../context/appContext";
 
 const SidebarContainer = styled.div`
   background: rgba(249, 250, 252, 0.94);
@@ -131,13 +131,14 @@ const SidebarContentList = styled.div`
 `;
 
 export default function Sidebar() {
+  const { sidebarData } = useContext(AppContext);
   const [isOpen, setIsOpen] = useState(true);
   const [search, setSearch] = useState("");
   const searchRef = useRef(search);
   // pofiltrowane dane z sidebaru na podstawie wpisywanej w wyszukiwarkę frazy (wielkość znaków nie ma znaczenia)
-  const filteredSidebarData = SortedSidebarData.filter((item) =>
-    item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
-  );
+  const filteredSidebarData = sidebarData
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .filter(item => item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase()));
 
   // funkcja zczytująca wpisywane w wyszukiwarkę frazy (dzięki funkcji referencji)
   function handleSearch() {
