@@ -34,7 +34,7 @@ const CitySet = styled.div`
   margin: 0px 5px 10px 5px;
   font-weight: 400;
   font-size: 14px;
-  text-transform: lowercase;
+  text-transform: none;
   border-left: solid 3px ${colors.gray300};
 
   @media (max-width: 410px) {
@@ -135,12 +135,12 @@ export default function MenuItem(props) {
           <CounterContainer>{checkedSetsCount}</CounterContainer>
         )}
         <ArrowContainer>
-          {!!props.set.length && <ArrowIcon open={open} />}
+          {!!props.sets.length && <ArrowIcon open={open} />}
         </ArrowContainer>
       </ListItem>
       {open && (
         <CitySet>
-          {props.set.map((item) => (
+          {props.sets.map((item) => (
             <ListItem
               key={item.name}
               onClick={() => handleCheckboxClick(props.name, item)}

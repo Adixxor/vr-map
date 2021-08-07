@@ -3,6 +3,7 @@ import { ZoomControl, FeatureGroup } from "react-leaflet";
 import LeafletMap from "../LeafletMap";
 import { MdArrowBack } from "react-icons/md";
 import { HiOutlineSwitchHorizontal } from "react-icons/hi";
+import { BiFullscreen } from "react-icons/bi";
 import "leaflet.sync";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -44,9 +45,9 @@ const BackToMainPageControl = () => {
   );
 };
 
-const SwitchStereoViewTypeButton = styled.button`
+const ControlButton = styled.button`
   position: absolute;
-  top: 90px;
+  top: 0;
   right: 10px;
   width: 34px;
   height: 34px;
@@ -60,6 +61,10 @@ const SwitchStereoViewTypeButton = styled.button`
     background-color: #f4f4f4;
   }
 `;
+
+const SwitchStereoViewTypeButton = styled(ControlButton)`
+  top: 90px;
+`;
 const SwitchStereoViewTypeIcon = styled(HiOutlineSwitchHorizontal)`
   color: black;
   height: 18px;
@@ -67,15 +72,48 @@ const SwitchStereoViewTypeIcon = styled(HiOutlineSwitchHorizontal)`
   margin-top: 5px;
 `;
 
+const ViewTypeInfo = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0; 
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 4px 8px;
+  z-index: 800;
+  text-align: center;
+`;
+
 const SwitchStereoViewTypeControl = (props) => {
   return (
-    <SwitchStereoViewTypeButton onClick={props.onClick}>
-      <SwitchStereoViewTypeIcon />
-    </SwitchStereoViewTypeButton>
+    <>
+      <SwitchStereoViewTypeButton onClick={props.onClick}>
+        <SwitchStereoViewTypeIcon />
+      </SwitchStereoViewTypeButton>
+      <ViewTypeInfo>
+        {`Tryb wyświetlania: ${props.isReversed ? 'krzyżogląd' : 'prostogląd'}.`}
+      </ViewTypeInfo>
+    </>
   );
 };
 
-// TODO: dodaj opcję pełnego ekranu
+const FullscreenButton = styled(ControlButton)`
+  top: 140px;
+`;
+
+const FullscreenIcon = styled(BiFullscreen)`
+  color: black;
+  height: 18px;
+  width: 18px;
+  margin-top: 5px;
+`;
+
+const FullScreenControl = (props) => {
+  return (
+    <FullscreenButton onClick={props.onClick}>
+      <FullscreenIcon />
+    </FullscreenButton>
+  );
+};
+
 // TODO: dodaj tooltipy do ikon
 
 export default function StereoView() {
@@ -83,6 +121,7 @@ export default function StereoView() {
   const [rightMap, setRightMap] = useState();
   const [isReversed, setIsReversed] = useState(false);
   const { chosenStereopair } = useContext(AppContext);
+  const containerRef = useRef();
   const leftImageRef = useRef();
   const rightImageRef = useRef();
 
@@ -134,8 +173,24 @@ export default function StereoView() {
     setIsReversed(!isReversed);
   }
 
+  function handleRequestFullscreen() {
+    // Jeśli w trybie fullscreen to wyjdź z fullscreen
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      // Jeśli nie w trybie fullcreen to zarządaj fullscreen
+      if (containerRef.current.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      } else if (containerRef.current.webkitRequestFullscreen) { // Safari
+        containerRef.current.webkitRequestFullscreen();
+      } else if (containerRef.current.msRequestFullscreen) { // IE11
+        containerRef.current.msRequestFullscreen();
+      }
+    }
+  };
+
   return (
-    <div style={{ display: "flex", width: "100%", height: "100vh" }}>
+    <div ref={containerRef} style={{ display: "flex", width: "100%", height: "100vh" }}>
       <LeafletMap
         style={{ width: "50%", height: "100vh" }}
         whenReady={(event) => setLeftMap(event.target)}
@@ -143,7 +198,11 @@ export default function StereoView() {
         <ZoomControl position={"topright"} />
         <BackToMainPageControl />
         <SwitchStereoViewTypeControl
+          isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
+        />
+        <FullScreenControl 
+          onClick={() => handleRequestFullscreen()}
         />
         <FeatureGroup ref={leftImageRef} />
       </LeafletMap>
@@ -154,7 +213,11 @@ export default function StereoView() {
         <ZoomControl position={"topright"} />
         <BackToMainPageControl />
         <SwitchStereoViewTypeControl
+          isReversed={isReversed}
           onClick={() => handleSwitchStereoViewClick()}
+        />
+        <FullScreenControl 
+          onClick={() => handleRequestFullscreen()}
         />
         <FeatureGroup ref={rightImageRef} />
       </LeafletMap>
