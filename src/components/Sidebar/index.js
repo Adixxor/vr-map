@@ -188,7 +188,7 @@ export default function Sidebar() {
         </SidebarMiddle>
         <SidebarContentList>
           {filteredSidebarData.map((item) => (
-            <MenuItem key={item.name} name={item.name} set={item.set} />
+            <MenuItem key={item.name} name={item.name} sets={item.sets} />
           ))}
         </SidebarContentList>
       </SidebarContainer>

@@ -3,13 +3,13 @@
 const SidebarData = [
   {
     name: "Wrocław",
-    set: [
+    sets: [
       {
         name: "zestaw 1",
         photos: [
           {
-            name: "6599_popr_geom",
-            fileName: "6599_popr_geom.png",
+            name: "6599_fixed",
+            fileName: "6599.jpg",
             bounds: [
               [51.0696512069, 17.1830582524],
               [51.0710147946, 17.2310650382],
@@ -18,12 +18,12 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "6598_popr_geom",
+              right: "6598_fixed",
             },
           },
           {
-            name: "6598_popr_geom",
-            fileName: "6598_popr_geom.png",
+            name: "6598_fixed",
+            fileName: "6598_fixed.jpg",
             bounds: [
               [51.0693756891, 17.192732201],
               [51.0696935337, 17.2405262193],
@@ -31,13 +31,13 @@ const SidebarData = [
               [51.0393367225, 17.1932380132],
             ],
             stereoPair: {
-              left: "6599_popr_geom",
+              left: "6599_fixed",
               right: null,
             },
           },
           {
-            name: "6564_popr_geom",
-            fileName: "6564_popr_geom.png",
+            name: "6564_fixed",
+            fileName: "6564_fixed.jpg",
             bounds: [
               [51.0861717483, 17.1285331858],
               [51.087146231, 17.1756227168],
@@ -46,12 +46,12 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "6563_popr_geom",
+              right: "6563_fixed",
             },
           },
           {
-            name: "6563_popr_geom",
-            fileName: "6563_popr_geom.png",
+            name: "6563_fixed",
+            fileName: "6563_fixed.jpg",
             bounds: [
               [51.0865519571, 17.1379741215],
               [51.087849708, 17.1850331222],
@@ -59,13 +59,13 @@ const SidebarData = [
               [51.0569863506, 17.1400401568],
             ],
             stereoPair: {
-              left: "6564_popr_geom",
-              right: "6562_popr_geom",
+              left: "6564_fixed",
+              right: "6562_fixed",
             },
           },
           {
-            name: "6562_popr_geom",
-            fileName: "6562_popr_geom.png",
+            name: "6562_fixed",
+            fileName: "6562_fixed.jpg",
             bounds: [
               [51.0866189737, 17.1472319014],
               [51.0880442894, 17.1942412825],
@@ -73,7 +73,7 @@ const SidebarData = [
               [51.0570808406, 17.149500993],
             ],
             stereoPair: {
-              left: "6563_popr_geom",
+              left: "6563_fixed",
               right: null,
             },
           },
@@ -83,8 +83,8 @@ const SidebarData = [
         name: "zestaw 2",
         photos: [
           {
-            name: "3889_popr_geom",
-            fileName: "3889_popr_geom.png",
+            name: "3889_fixed",
+            fileName: "3889_fixed.jpg",
             bounds: [
               [51.0606484298, 17.1782477825],
               [51.0614503794, 17.1977577866],
@@ -92,13 +92,13 @@ const SidebarData = [
               [51.0483848188, 17.1795237727],
             ],
             stereoPair: {
-              left: "3888_popr_geom",
+              left: "3888_fixed",
               right: null,
             },
           },
           {
-            name: "3888_popr_geom",
-            fileName: "3888_popr_geom.png",
+            name: "3888_fixed",
+            fileName: "3888_fixed.jpg",
             bounds: [
               [51.0597571431, 17.1703435152],
               [51.0605809839, 17.190028663],
@@ -106,13 +106,13 @@ const SidebarData = [
               [51.0473831873, 17.1716543121],
             ],
             stereoPair: {
-              left: "3887_popr_geom",
-              right: "3889_popr_geom",
+              left: "3887_fixed",
+              right: "3889_fixed",
             },
           },
           {
-            name: "3887_popr_geom",
-            fileName: "3887_popr_geom.png",
+            name: "3887_fixed",
+            fileName: "3887_fixed.jpg",
             bounds: [
               [51.0601807528, 17.1630708846],
               [51.0609535229, 17.1826766541],
@@ -120,13 +120,13 @@ const SidebarData = [
               [51.0478495468, 17.1642911876],
             ],
             stereoPair: {
-              left: "3886_popr_geom",
-              right: "3888_popr_geom",
+              left: "3886_fixed",
+              right: "3888_fixed",
             },
           },
           {
-            name: "3886_popr_geom",
-            fileName: "3886_popr_geom.png",
+            name: "3886_fixed",
+            fileName: "3886_fixed.jpg",
             bounds: [
               [51.0602252583, 17.1558936994],
               [51.0608670714, 17.1755249117],
@@ -134,13 +134,13 @@ const SidebarData = [
               [51.0478634978, 17.1568824113],
             ],
             stereoPair: {
-              left: "3885_popr_geom",
-              right: "3887_popr_geom",
+              left: "3885_fixed",
+              right: "3887_fixed",
             },
           },
           {
-            name: "3885_popr_geom",
-            fileName: "3885_popr_geom.png",
+            name: "3885_fixed",
+            fileName: "3885_fixed.jpg",
             bounds: [
               [51.0606701434, 17.1480129816],
               [51.061144916, 17.1677652398],
@@ -149,7 +149,7 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "3886_popr_geom",
+              right: "3886_fixed",
             },
           },
         ],
@@ -158,8 +158,8 @@ const SidebarData = [
         name: "zestaw 3",
         photos: [
           {
-            name: "0040_popr_geom",
-            fileName: "0040_popr_geom.png",
+            name: "0040_fixed",
+            fileName: "0040_fixed.jpg",
             bounds: [
               [51.0595987455, 17.147311427],
               [51.0589591204, 17.1804542584],
@@ -168,12 +168,12 @@ const SidebarData = [
             ],
             stereoPair: {
               left: null,
-              right: "0039_popr_geom",
+              right: "0039_fixed",
             },
           },
           {
-            name: "0039_popr_geom",
-            fileName: "0039_popr_geom.png",
+            name: "0039_fixed",
+            fileName: "0039_fixed.jpg",
             bounds: [
               [51.0590501357, 17.1619800231],
               [51.0587453213, 17.194707881],
@@ -181,13 +181,13 @@ const SidebarData = [
               [51.0384755013, 17.1614950712],
             ],
             stereoPair: {
-              left: "0040_popr_geom",
-              right: "0038_popr_geom",
+              left: "0040_fixed",
+              right: "0038_fixed",
             },
           },
           {
-            name: "0038_popr_geom",
-            fileName: "0038_popr_geom.png",
+            name: "0038_fixed",
+            fileName: "0038_fixed.jpg",
             bounds: [
               [51.0590826636, 17.1740190098],
               [51.0591407993, 17.2067901606],
@@ -195,13 +195,13 @@ const SidebarData = [
               [51.0384808094, 17.1741115055],
             ],
             stereoPair: {
-              left: "0039_popr_geom",
-              right: "0037_popr_geom",
+              left: "0039_fixed",
+              right: "0037_fixed",
             },
           },
           {
-            name: "0037_popr_geom",
-            fileName: "0037_popr_geom.png",
+            name: "0037_fixed",
+            fileName: "0037_fixed.jpg",
             bounds: [
               [51.0595113688, 17.1875920119],
               [51.0596179896, 17.22037789],
@@ -209,13 +209,13 @@ const SidebarData = [
               [51.0389004363, 17.1877616411],
             ],
             stereoPair: {
-              left: "0038_popr_geom",
-              right: "0036_popr_geom",
+              left: "0038_fixed",
+              right: "0036_fixed",
             },
           },
           {
-            name: "0036_popr_geom",
-            fileName: "0036_popr_geom.png",
+            name: "0036_fixed",
+            fileName: "0036_fixed.jpg",
             bounds: [
               [51.059990927, 17.2001327017],
               [51.0597799313, 17.2329472829],
@@ -223,7 +223,7 @@ const SidebarData = [
               [51.039362161, 17.1997969932],
             ],
             stereoPair: {
-              left: "0037_popr_geom",
+              left: "0037_fixed",
               right: null,
             },
           },
@@ -233,20 +233,20 @@ const SidebarData = [
   },
   {
     name: "Chęciny",
-    set: [{ name: "zestaw 1" }, { name: "zestaw 2" }],
+    sets: [{ name: "zestaw 1" }, { name: "zestaw 2" }],
   },
   {
     name: "Goplański Park Narodowy",
-    set: [{ name: "zestaw 1" }, { name: "zestaw 2" }, { name: "zestaw 3" }],
+    sets: [{ name: "zestaw 1" }, { name: "zestaw 2" }, { name: "zestaw 3" }],
   },
   {
     name: "Bychawa",
-    set: [
+    sets: [
       {
         name: "zestaw 1",
         photos: [
           {
-            name: "0001_popr_geom",
+            name: "0001_fixed",
             bounds: [
               [51.1695987455, 17.257311427],
               [51.1689591204, 17.2904542584],
@@ -255,7 +255,7 @@ const SidebarData = [
             ],
           },
           {
-            name: "0002_popr_geom",
+            name: "0002_fixed",
             bounds: [
               [51.1690501357, 17.2719800231],
               [51.1687453213, 17.304707881],
@@ -272,7 +272,7 @@ const SidebarData = [
   },
   {
     name: "Elgiszewo",
-    set: [
+    sets: [
       { name: "zestaw 1" },
       { name: "zestaw 2" },
       { name: "zestaw 3" },
@@ -281,7 +281,7 @@ const SidebarData = [
   },
   {
     name: "Chorzów",
-    set: [
+    sets: [
       { name: "zestaw 1" },
       { name: "zestaw 2" },
       { name: "zestaw 3" },
@@ -290,11 +290,11 @@ const SidebarData = [
   },
   {
     name: "Karkonosze",
-    set: [],
+    sets: [],
   },
   {
     name: "Jarosław",
-    set: [
+    sets: [
       { name: "zestaw 1" },
       { name: "zestaw 2" },
       { name: "zestaw 3" },
@@ -306,3 +306,35 @@ const SidebarData = [
 export const SortedSidebarData = SidebarData.sort((a, b) =>
   a.name.localeCompare(b.name)
 );
+
+// const convertJSONtoCSV = () => {
+//   const DELIMITER = ',';
+//   const END_OF_LINE = '\n';
+//   let result = ''
+
+//   SidebarData.forEach(menuItem => {
+//     menuItem.sets.forEach(subMenuItem => {
+//       subMenuItem.photos?.forEach(photo => {
+//         result += menuItem.name + DELIMITER;
+//         result += subMenuItem.name + DELIMITER;
+//         result += photo.name + DELIMITER;
+//         result += (photo.fileName || '') + DELIMITER;
+//         result += photo.bounds[0][0] + DELIMITER;
+//         result += photo.bounds[0][1] + DELIMITER;
+//         result += photo.bounds[1][0] + DELIMITER;
+//         result += photo.bounds[1][1] + DELIMITER;
+//         result += photo.bounds[2][0] + DELIMITER;
+//         result += photo.bounds[2][1] + DELIMITER;
+//         result += photo.bounds[3][0] + DELIMITER;
+//         result += photo.bounds[3][1] + DELIMITER;
+//         result += photo.stereoPair?.left || '' + DELIMITER;
+//         result += photo.stereoPair?.right || '';
+//         result += END_OF_LINE;
+//       })
+//     })
+//   })
+
+//   return result;
+// }
+
+// console.log(convertJSONtoCSV());
