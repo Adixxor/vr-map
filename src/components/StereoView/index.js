@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import L, { LatLng } from "leaflet";
 import "leaflet-imageoverlay-rotated";
 import { AppContext } from "../../context/appContext";
+import Tooltip from "../../components/Tooltip";
 
 const PUBLIC_IMAGES = `${process.env.PUBLIC_URL}/images/`;
 
@@ -40,7 +41,9 @@ const ArrowBackButton = styled(MdArrowBack)`
 const BackToMainPageControl = () => {
   return (
     <LinkButton to={"/"}>
-      <ArrowBackButton />
+      <Tooltip direction={'right'} content={"Cofnij do widoku głównego"}>
+        <ArrowBackButton />
+      </Tooltip>
     </LinkButton>
   );
 };
@@ -93,7 +96,9 @@ const SwitchStereoViewTypeControl = (props) => {
   return (
     <>
       <SwitchStereoViewTypeButton onClick={props.onClick}>
-        <SwitchStereoViewTypeIcon />
+        <Tooltip direction={'left'} content={"Zmień tryb wyświetlania"}>
+          <SwitchStereoViewTypeIcon />
+        </Tooltip>
       </SwitchStereoViewTypeButton>
       <ViewTypeInfo>
         {`Tryb wyświetlania: ${
@@ -118,12 +123,12 @@ const FullscreenIcon = styled(BiFullscreen)`
 const FullScreenControl = (props) => {
   return (
     <FullscreenButton onClick={props.onClick}>
-      <FullscreenIcon />
+      <Tooltip direction={'left'} content={"Pokaż w pełnym ekranie"}>
+        <FullscreenIcon />
+      </Tooltip>
     </FullscreenButton>
   );
 };
-
-// TODO: dodaj tooltipy do ikon
 
 export default function StereoView() {
   const [leftMap, setLeftMap] = useState();
