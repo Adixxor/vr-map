@@ -6,6 +6,7 @@ import { FiMenu } from "react-icons/fi";
 import styled from "styled-components";
 import { colors } from "../../consts/colors";
 import { AppContext } from "../../context/appContext";
+import Tooltip from "../Tooltip";
 
 const SidebarContainer = styled.div`
   background: rgba(249, 250, 252, 0.94);
@@ -159,14 +160,20 @@ export default function Sidebar() {
   // jeśli stan sidebaru jest określony jako nie otwarty to
   // zastąp pasek nawigacji ikoną "burger menu", którego kliknięcie przywraca nawigację
   if (!isOpen) {
-    return <FiMenuButton onClick={() => setIsOpen(true)} />;
+    return (
+      <Tooltip direction={'right'} content={'Rozwiń panel boczny'}>
+        <FiMenuButton onClick={() => setIsOpen(true)} />
+      </Tooltip>
+    );
   }
 
   return (
     <div style={{ height: "100vh", overflowY: "scroll" }}>
       <SidebarContainer>
         <SidebarTop>
-          <IoIosArrowBackButton onClick={closeSidebar} />
+          <Tooltip direction={'right'} content={'Zwiń panel boczny'}>
+            <IoIosArrowBackButton onClick={closeSidebar} />
+          </Tooltip>
           <SidebarMainTitle>Serwis stereoskopowy</SidebarMainTitle>
         </SidebarTop>
         <SidebarMiddle>
