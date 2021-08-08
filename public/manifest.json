@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Stereoskopowy serwis mapowy",
+  "name": "Stereoskopowe wyświetlanie zdjęć lotniczych",
   "icons": [
     {
       "src": "favicon.ico",
