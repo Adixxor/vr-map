@@ -21,6 +21,7 @@ const SidebarContainer = styled.div`
 const SidebarTop = styled.div`
   display: flex;
   align-items: center;
+  border-bottom: solid 2px ${colors.gray100};
 `;
 
 const IoIosArrowBackButton = styled(IoIosArrowBack)`
@@ -46,7 +47,7 @@ const SearchContainer = styled.div`
   display: flex;
   width: 300px;
   height: 28px;
-  margin: 0px 20px 20px 30px;
+  margin: 20px 20px 10px 30px;
   border-radius: 20px;
 
   @media (max-width: 410px) {
@@ -108,11 +109,10 @@ const FiMenuButton = styled(FiMenu)`
 
 const SidebarListTitle = styled.div`
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
-  padding: 20px 0px 15px 35px;
+  padding: 10px 0px 20px 35px;
   color: ${colors.gray500};
-  border-top: solid 2px ${colors.gray100};
 `;
 
 const SidebarMainTitle = styled.div`
@@ -139,18 +139,15 @@ export default function Sidebar() {
   // pofiltrowane dane z sidebaru na podstawie wpisywanej w wyszukiwarkę frazy (wielkość znaków nie ma znaczenia)
   const filteredSidebarData = sidebarData
     .sort((a, b) => a.name.localeCompare(b.name))
-    .filter(item => item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase()));
+    .filter((item) =>
+      item.name.toLocaleUpperCase().includes(search.toLocaleUpperCase())
+    );
 
   // funkcja zczytująca wpisywane w wyszukiwarkę frazy (dzięki funkcji referencji)
   function handleSearch() {
     const value = searchRef.current.value;
     setSearch(value);
   }
-
-  // alternatywny sposób wyszukiwania
-  // function handleSearchChanged(event) {
-  // setSearch(event.target.value);
-  // }
 
   // funkcja ustawiająca stan sidebaru (czy otwarty czy zamknięty)
   function closeSidebar() {
@@ -161,7 +158,7 @@ export default function Sidebar() {
   // zastąp pasek nawigacji ikoną "burger menu", którego kliknięcie przywraca nawigację
   if (!isOpen) {
     return (
-      <Tooltip direction={'right'} content={'Rozwiń panel boczny'}>
+      <Tooltip direction={"right"} content={"Rozwiń panel boczny"}>
         <FiMenuButton onClick={() => setIsOpen(true)} />
       </Tooltip>
     );
@@ -171,28 +168,25 @@ export default function Sidebar() {
     <div style={{ height: "100vh", overflowY: "scroll" }}>
       <SidebarContainer>
         <SidebarTop>
-          <Tooltip direction={'right'} content={'Zwiń panel boczny'}>
+          <Tooltip direction={"right"} content={"Zwiń panel boczny"}>
             <IoIosArrowBackButton onClick={closeSidebar} />
           </Tooltip>
           <SidebarMainTitle>Serwis stereoskopowy</SidebarMainTitle>
         </SidebarTop>
         <SidebarMiddle>
-          <SidebarListTitle>Dostępne zestawy zdjęć lotniczych</SidebarListTitle>
           <SearchContainer>
             <SearchInput
               ref={searchRef}
               name="search"
-              placeholder="Szukaj poligonu lub zestawu"
+              placeholder="Szukaj poligonu lub szeregu"
               autoComplete="off"
               onKeyUp={handleSearch}
-              // alternatywnie bez ref
-              // onChange={(event) => handleSearchChanged(event)}
-              // value={search}
             />
             <IconSearchContainer type="submit" onClick={handleSearch}>
               <BiSearchButton />
             </IconSearchContainer>
           </SearchContainer>
+          <SidebarListTitle>Poligony fotointerpretacyjne:</SidebarListTitle>
         </SidebarMiddle>
         <SidebarContentList>
           {filteredSidebarData.map((item) => (

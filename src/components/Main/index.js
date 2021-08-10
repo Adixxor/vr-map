@@ -15,7 +15,7 @@ export default function Main() {
     // jeśli w checkedSets nie ma zdjęcia z selectedPolygon ustaw selectedPolygon na null
     setSelectedPolygon((prevSelectedPolygon) => {
       let found = false;
-      // sprawdz czy w checkedSets jest selectedPolygon
+      // sprawdź czy w checkedSets jest selectedPolygon
       checkedSets.forEach((set) => {
         set.photos?.forEach((photo) => {
           if (photo.name === prevSelectedPolygon) {

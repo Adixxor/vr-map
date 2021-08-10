@@ -42,6 +42,10 @@ const CitySet = styled.div`
   }
 `;
 
+const CitySetTitle = styled.div`
+  padding-bottom: 12px;
+`;
+
 const ListItem = styled.div`
   display: flex;
   margin-bottom: 10px;
@@ -140,24 +144,28 @@ export default function MenuItem(props) {
       </ListItem>
       {open && (
         <CitySet>
-          {props.sets.map((item) => (
-            <ListItem
-              key={item.name}
-              onClick={() => handleCheckboxClick(props.name, item)}
-            >
-              <ChecboxContainer
-                type="checkbox"
-                onChange={() => {}}
-                checked={
-                  !!checkedSets.find(
-                    (set) =>
-                      set.cityName === props.name && set.name === item.name
-                  )
-                }
-              ></ChecboxContainer>
-              {item.name}
-            </ListItem>
-          ))}
+          <CitySetTitle>Numer szeregu (nr zdjęć):</CitySetTitle>
+          {/* alfabetyczne sortowanie szeregów (setów) */}
+          {props.sets
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((item) => (
+              <ListItem
+                key={item.name}
+                onClick={() => handleCheckboxClick(props.name, item)}
+              >
+                <ChecboxContainer
+                  type="checkbox"
+                  onChange={() => {}}
+                  checked={
+                    !!checkedSets.find(
+                      (set) =>
+                        set.cityName === props.name && set.name === item.name
+                    )
+                  }
+                ></ChecboxContainer>
+                {item.name}
+              </ListItem>
+            ))}
         </CitySet>
       )}
     </CityName>
