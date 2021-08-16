@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/vr-map/static/css/main.482a42b0.chunk.css",
+    "main.js": "/vr-map/static/js/main.c306cddb.chunk.js",
+    "main.js.map": "/vr-map/static/js/main.c306cddb.chunk.js.map",
+    "runtime-main.js": "/vr-map/static/js/runtime-main.00375bb5.js",
+    "runtime-main.js.map": "/vr-map/static/js/runtime-main.00375bb5.js.map",
+    "static/js/2.986fcacd.chunk.js": "/vr-map/static/js/2.986fcacd.chunk.js",
+    "static/js/2.986fcacd.chunk.js.map": "/vr-map/static/js/2.986fcacd.chunk.js.map",
+    "index.html": "/vr-map/index.html",
+    "static/css/main.482a42b0.chunk.css.map": "/vr-map/static/css/main.482a42b0.chunk.css.map",
+    "static/js/2.986fcacd.chunk.js.LICENSE.txt": "/vr-map/static/js/2.986fcacd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.00375bb5.js",
+    "static/js/2.986fcacd.chunk.js",
+    "static/css/main.482a42b0.chunk.css",
+    "static/js/main.c306cddb.chunk.js"
+  ]
+}
